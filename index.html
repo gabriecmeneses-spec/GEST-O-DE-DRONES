@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SkyTrack Drones</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: Arial, sans-serif;
+            background: #0f0f0f;
+            color: #fff;
+        }
+        header {
+            background: #000000;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        header h1 { font-size: 26px; }
+        nav a {
+            margin: 0 15px;
+            color: #266f94;
+            font-weight: bold;
+            text-decoration: none;
+        }
+        nav a:hover { color: #379dcf; }
+
+        .hero {
+            height: 70vh;
+            background: url('https://superimportadora.com.br/wp-content/uploads/2022/06/dji-mavic-2-enterprise-theme.png')center/cover no-repeat;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+        }
+        .hero h2 {
+            background: rgba(35, 35, 35, 0.6);
+            padding: 20px 30px;
+            border-radius: 20px;
+            font-size: 27px;
+        }
+
+        section { padding: 50px 10%; }
+        h2 { margin-bottom: 20px; font-size: 28px; }
+
+        .card-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        .card {
+            background: #2a2a2a;
+            padding: 20px;  
+            border-radius: 20px;
+            transition: 0.3s;   
+        }
+        .card:hover { transform: translateY(-5px); }
+        .card img { width: 100%; border-radius: 10px; }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            max-width: 400px;
+            background: #050b1c;
+            padding: 20px;
+            border-radius: 20px;
+            
+        }
+        input, select {
+            padding: 10px;
+            border: none;
+            border-radius: 6px;
+        }
+        button {
+            padding: 12px;
+            background: #0088cc;
+            border: none;
+            color: #fff;
+            cursor: pointer;
+            border-radius: 8px;
+        }
+        button:hover { background: #006699; }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: #072e52;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>SkyTrack Drones</h1>
+        <nav>
+            <a href="#sobre">Sobre</a>
+            <a href="#modelos">Modelos</a>
+            <a href="#cadastro">Cadastro</a>
+            <a href="#rastreio">Rastreio</a>
+        </nav>
+    </header>
+
+    <div class="hero">
+        <h2>O Futuro Dos Drones Começa !</h2>
+    </div>
+
+    <section id="sobre">
+        <h2>Sobre Nós</h2>
+        <p>Somos líderes em tecnologia de drones para monitoramento, entrega e inspeção aérea. Nosso foco é inovação, segurança e precisão.</p>
+        <br><br>
+        <p>Nova Tecnologia Para Altas Horas de Dronagem!</p>
+    </section>
+
+    <section id="modelos">
+        <h2>Modelos de Drones</h2>
+        <div class="card-container">
+            <div class="card">
+                <img src="https://www-cdn.djiits.com/cms/uploads/1ca18733efed500879f603bb3c8b747a@640*640.png" alt="Drone 1">
+                <h3>Drone Falcon X1</h3>
+                <p>Alta performance para longas distâncias.</p>
+            </div>
+            <div class="card">
+                <img src="https://images.ctfassets.net/go54bjdzbrgi/rmRgUDM7su73b9yeSFCYQ/e31b0e3931848620d09df9901ccd6074/Mavic_Air.png" alt="Drone 2">
+                <h3>Drone Vision Pro</h3>
+                <p>Perfeito para filmagens profissionais.</p>
+            </div>
+            <div class="card">
+                <img src="https://www-cdn.djiits.com/cms/uploads/f25e1539f506e56494fd091a14587751.png" alt="Drone 3">
+                <h3>Drone SkyMini</h3>
+                <p>Compacto e ideal para iniciantes.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="cadastro">
+        <h2>Cadastrar Drone</h2>
+        <form id="formCadastro">
+            <input type="text" id="idDrone" placeholder="ID do Drone" required>
+            <input type="text" id="modelo" placeholder="Modelo" required>
+            <input type="text" id="cor" placeholder="Cor" required>
+            <input type="text" id="peso" placeholder="Peso (kg)" required>
+            <button type="submit">Cadastrar</button>
+        </form>
+    </section>
+
+    <section id="rastreio">
+        <h2>Rastrear Drone</h2>
+        <form onsubmit="rastrear(event)">
+            <input type="text" id="rastreoID" placeholder="ID do Drone" required>
+            <button type="submit">Rastrear</button>
+        </form>
+        <p id="resultadoRastreio"></p>
+    </section>
+
+    <footer>
+        <p©> 2025 SkyTrack Drones — Tecnologia para voar mais alto.</p>
+        <p>Todos os Direitos Reservados</p>
+        <p>Ins  tagram: @g4br_mc</p>
+    </footer>
+
+    <script>
+        const drones = [];
+
+        document.getElementById("formCadastro").addEventListener("submit", function(e){
+            e.preventDefault();
+
+            const drone = {
+                id: document.getElementById("idDrone").value,
+                modelo: document.getElementById("modelo").value,
+                cor: document.getElementById("cor").value,
+                peso: document.getElementById("peso").value
+            };
+
+            drones.push(drone);
+            alert("Drone cadastrado com sucesso!");
+            this.reset();
+        });
+
+        function rastrear(e){
+            e.preventDefault();
+            const id = document.getElementById("rastreoID").value;
+            const res = drones.find(d => d.id === id);
+
+            document.getElementById("resultadoRastreio").textContent = res ?
+                `Drone encontrado: Modelo ${res.modelo}, Cor ${res.cor}, Peso ${res.peso}kg` :
+                "Drone não encontrado.";
+        }
+    </script>
+</body>
+</html>

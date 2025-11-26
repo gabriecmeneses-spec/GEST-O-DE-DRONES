@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Drones</title>
+    <style>
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(120deg, #000000, #5c5858);
+            color: #333;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: auto;
+            background-color: #ffffff;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 0 15px rgba(193, 187, 183, 0.603);
+        }
+
+        .header, .form-section {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .header img {
+            width: 100%;
+            max-width: 300px;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-size: 2em;
+            background-color: #000;
+            color: #fff;
+            padding: 10px;
+            border-radius: 8px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        label {
+            font-weight: 600;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        input[type="text"],
+        input[type="password"],
+        input[type="date"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            transition: 0.3s;
+        }
+
+        input:focus {
+            border-color: #007BFF;
+            outline: none;
+        }
+
+        .color-options {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .color-options label {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-weight: normal;
+        }
+
+        .btn-group {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        button {
+            flex: 1;
+            min-width: 140px;
+            padding: 12px;
+            background-color: #000;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background-color: #333;
+        }
+
+        .drone-image {
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .drone-image img {
+            max-width: 100%;
+            border: 2px solid black;
+            border-radius: 12px;
+        }
+
+        @media (max-width: 600px) {
+            .btn-group {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <img src="https://img.freepik.com/vetores-premium/bem-vindo-inscricao-caligrafica-com-linhas-suaves_110338-806.jpg?size=338&ext=jpg" alt="Bem-vindo">
+            <h1>Gestão de Drones</h1>
+        </div>
+
+        <div class="form-section">
+            <h2>Buscar Drone</h2>
+            <form onsubmit="buscarDrone(event)">
+                <label for="idDrone">ID do Drone:</label>
+                <input type="text" id="idDrone" maxlength="20" required>
+                <button type="submit">Obter Informações</button>
+            </form>
+        </div>
+
+        <div class="form-section">
+            <h2>Cadastrar Novo Drone</h2>
+            <form id="formCadastro">
+                <label for="novoId">ID do Novo Drone:</label>
+                <input type="text" id="novoId" maxlength="20" required>
+
+                <label for="modelo">Modelo:</label>
+                <input type="text" id="modelo" maxlength="20" required>
+
+                <label for="serie">Número de Série:</label>
+                <input type="password" id="serie" maxlength="10" required>
+
+                <label for="licenca">Licença:</label>
+                <input type="password" id="licenca" required>
+
+                <label for="emissao">Data de Emissão:</label>
+                <input type="date" id="emissao" required>
+
+                <label for="validade">Data de Validade:</label>
+                <input type="date" id="validade" required>
+
+                <label>Cor do Drone:</label>
+                <div class="color-options">
+                    <label><input type="checkbox" id="vermelho"> Vermelho</label>
+                    <label><input type="checkbox" id="azul"> Azul</label>
+                    <label><input type="checkbox" id="preto"> Preto</label>
+                    <label><input type="checkbox" id="branco"> Branco</label>
+                    <label><input type="checkbox" id="cinza"> Cinza</label>
+                </div>
+
+                <div class="btn-group">
+                    <button type="reset">Resetar</button>
+                    <button type="submit">Cadastrar</button>
+                </div>
+            </form>
+        </div>
+
+        <div class="drone-image">
+            <h2>Exemplo de Drone</h2>
+            <img src="https://cdn.awsli.com.br/600x450/1620/1620994/produto/1807840937f848d2553.jpg" alt="Drone de Exemplo">
+        </div>
+    </div>
+
+    <script>
+        function buscarDrone(e) {
+            e.preventDefault();
+            const id = document.getElementById("idDrone").value;
+            alert("Buscando informações do drone ID: " + id);
+        }
+
+        document.getElementById("formCadastro").addEventListener("submit", function (e) {
+            e.preventDefault();
+            alert("Drone cadastrado com sucesso!");
+        });
+    </script>
+</body>
+</html>
+
